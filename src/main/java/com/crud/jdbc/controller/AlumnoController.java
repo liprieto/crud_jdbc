@@ -46,7 +46,7 @@ public class AlumnoController {
 		return "redirect:/alumnos";
 	}
 
-	@GetMapping("/wizard/delete")
+	@GetMapping("/alumno/delete")
 	public String borrarAlumno(@RequestParam Long id) {
 
 		repository.borrarPorId(id);

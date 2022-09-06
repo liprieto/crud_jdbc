@@ -112,7 +112,7 @@ public class AlumnoRepository implements CrudDAO<Alumno>{
             List<Alumno> alumnos = new ArrayList<>();
 
             while (resultSet.next()) {
-                Long id = resultSet.getLong("id_alumno");
+                Long id = resultSet.getLong("id");
                 String nombre = resultSet.getString("nombre");
                 String apellido = resultSet.getString("apellido");
                 Date fechaNac = resultSet.getDate("fecha_nac");
@@ -146,7 +146,7 @@ public class AlumnoRepository implements CrudDAO<Alumno>{
             statement.setDate(3, alumno.getFecha_nac());
             statement.setString(4, alumno.getDomicilio());
 
-            statement.setLong(7, alumno.getId());
+            statement.setLong(5, alumno.getId());
 
             if (statement.executeUpdate() != 1) {
                 throw new SQLException("No es posible actualizar datos");
