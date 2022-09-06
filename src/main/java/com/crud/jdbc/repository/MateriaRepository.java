@@ -29,11 +29,11 @@ public class MateriaRepository implements CrudDAO<Materia>{
             		DB_URL, DB_USER, DB_PASSWORD
             );
             statement = connection.prepareStatement(
-            		"INSERT INTO materia (nombre, año, semestre) VALUES (?, ?, ?)",
+            		"INSERT INTO materia (nombre, periodo, semestre) VALUES (?, ?, ?)",
             		Statement.RETURN_GENERATED_KEYS
             );
             statement.setString(1, materia.getNombre());
-            statement.setLong(2, materia.getAño());
+            statement.setLong(2, materia.getPeriodo());
             statement.setString(3, materia.getSemestre());
          
 
@@ -77,9 +77,9 @@ public class MateriaRepository implements CrudDAO<Materia>{
 
             if (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
-                Long año = resultSet.getLong("año");
+                Long periodo = resultSet.getLong("periodo");
                 String semestre = resultSet.getString("semestre");
-                return new Materia(id, nombre, año, semestre);
+                return new Materia(id, nombre, periodo, semestre);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -109,11 +109,11 @@ public class MateriaRepository implements CrudDAO<Materia>{
             while (resultSet.next()) {
                 Long id = resultSet.getLong("id");
                 String nombre = resultSet.getString("nombre");
-                Long año = resultSet.getLong("año");
+                Long periodo = resultSet.getLong("periodo");
                 String semestre = resultSet.getString("semestre");
                 
       
-                materias.add(new Materia(id, nombre, año, semestre));
+                materias.add(new Materia(id, nombre, periodo, semestre));
             }
             return materias;
         } catch (SQLException e) {
@@ -134,10 +134,10 @@ public class MateriaRepository implements CrudDAO<Materia>{
                     DB_URL, DB_USER, DB_PASSWORD
             );
             statement = connection.prepareStatement(
-                    "UPDATE materia SET nombre=?, año=?, semestre=? WHERE id=?"
+                    "UPDATE materia SET nombre=?, periodo=?, semestre=? WHERE id=?"
             );
             statement.setString(1, materia.getNombre());
-            statement.setLong(2, materia.getAño());
+            statement.setLong(2, materia.getPeriodo());
             statement.setString(3, materia.getSemestre());
 
             statement.setLong(4, materia.getId());
@@ -164,7 +164,7 @@ public class MateriaRepository implements CrudDAO<Materia>{
                     DB_URL, DB_USER, DB_PASSWORD
             );
             statement = connection.prepareStatement(
-                    "DELETE FROM alumno WHERE id=?"
+                    "DELETE FROM materia WHERE id=?"
             );
             statement.setLong(1, id);
 

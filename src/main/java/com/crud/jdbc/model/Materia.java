@@ -4,18 +4,18 @@ public class Materia {
 	
 	private Long id;
     private String nombre;
-    private Long año;
+    private Long periodo;
     private String semestre;
     
 	public Materia() {
 		super();
 	}
 
-	public Materia(Long id, String nombre, Long año, String semestre) {
+	public Materia(Long id, String nombre, Long periodo, String semestre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.año = año;
+		this.periodo = periodo;
 		this.semestre = semestre;
 	}
 
@@ -35,12 +35,12 @@ public class Materia {
 		this.nombre = nombre;
 	}
 
-	public Long getAño() {
-		return año;
+	public Long getPeriodo() {
+		return periodo;
 	}
 
-	public void setAño(Long año) {
-		this.año = año;
+	public void setPeriodo(Long periodo) {
+		this.periodo = periodo;
 	}
 
 	public String getSemestre() {
@@ -50,6 +50,8 @@ public class Materia {
 	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
+
+	
     
     
 }
