@@ -1,5 +1,6 @@
 package com.crud.jdbc.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.crud.jdbc.model.Materia;
 import com.crud.jdbc.repository.MateriaRepository;
 
+@Controller
 public class MateriaController {
 	
     private MateriaRepository repository = new MateriaRepository();
@@ -42,7 +44,7 @@ public class MateriaController {
         } else {
             repository.guardar(materia);
         }
-        return "redirect:/materias";
+        return "redirect:/materia";
     }
 
     @GetMapping("/materia/delete")
