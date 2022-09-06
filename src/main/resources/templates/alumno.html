@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alumno</title>
+</head>
+<body>
+<h3 th:text="${alumno.id} ? 'Editar Alumno' : 'Nuevo Alumno'">Alumno</h3>
+<form method="post" th:action="@{/alumno}" th:object="${alumno}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="alumno-nombre">Nombre:</label>
+    <input id="alumno-nombre" name="Nombre" placeholder="Pepe" required th:field="*{nombre}" type="text">
+    <br><br>
+    <label for="alumno-apellido">Apellido:</label>
+    <input id="alumno-apellido" name="apellido" placeholder="Perez" required th:field="*{apellido}" type="text">
+    <br><br>
+    <label for="alumno-fecha_nac">Fecha Nacimiento:</label>
+    <input id="alumno-fecha_nac" name="fecha_nac" placeholder="1987-11-20" required th:field="*{fecha_nac}" type="date">
+    <br><br>
+    <label for="alumno-domicilio">Domicilio:</label>
+    <input id="alumno-domicilio" name="domicilio" placeholder="Mendoza" th:field="*{domicilio}" type="text">
+    <br><br>
+    <input type="submit" value="Send">
+</form>
+<br>
+<a href="/alumnos">Volver al listado</a>
+</body>

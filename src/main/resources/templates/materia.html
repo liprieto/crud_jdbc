@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>School</title>
+</head>
+<body>
+<h3 th:text="${materia.id} ? 'Editar Materia' : 'Crear materia'">Materia</h3>
+<form method="post" th:action="@{/materia}" th:object="${materia}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="materia-nombre">Nombre:</label>
+    <input id="materia-nombre" name="nombre" placeholder="Algoritmos" required th:field="*{nombre}" type="text">
+    <br><br>
+    <label for="materia-año">Año:</label>
+    <input id="materia-año" name="año" placeholder="2020" required th:field="*{año}" type="number">
+    <br><br>
+    <label for="materia-semestre">Semestre:</label>
+    <input id="materia-semestre" name="semestre" placeholder="Segundo" required th:field="*{semestre}" type="text">
+    <br><br>
+    <input type="submit" value="Enviar">
+</form>
+<br>
+<a href="/materias">Volver a la lista de materias</a>
+</body>
+</html>

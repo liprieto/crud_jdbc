@@ -1,0 +1,58 @@
+!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alumnos</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>Alumnos</h3>
+<a href="/alumno">Nuevo alumno !</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha Nacimiento</th>
+        <th>Domicilio</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alumno : ${alumnos}">
+        <td th:text="${alumno.id}">id</td>
+        <td th:text="${alumno.nombre}">nombre</td>
+        <td th:text="${alumno.apellido}">apellido</td>
+        <td th:text="${alumno.fecha_nac}">fecha nacimiento</td>
+        <td th:text="${alumno.domicilio}">domicilio</td>
+        <td><a th:href="@{/alumno(id=${alumno.id})}">Editar</a></td>
+        <td><a th:href="@{/alumno/delete(id=${alumno.id})}">Borrar</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/">Volver al listado de alumnos</a>
+</body>
+</html>
