@@ -25,7 +25,7 @@ public class MateriaController {
 
     @GetMapping("/materia")
     public String buscarMateria(Model model,
-                            @RequestParam(required = false) Long id) {
+                            @RequestParam(required = false) Integer id) {
 
         Materia materia = new Materia();
         if (id != null) {
@@ -39,7 +39,7 @@ public class MateriaController {
     @PostMapping("/materia")
     public String enviarMateria(@ModelAttribute Materia materia) {
 
-        if (materia.getId() != null) {
+        if (materia.getId() != 0) {
             repository.actualizar(materia);
         } else {
             repository.guardar(materia);
@@ -48,7 +48,7 @@ public class MateriaController {
     }
 
     @GetMapping("/materia/delete")
-    public String borrarMateria(@RequestParam Long id) {
+    public String borrarMateria(@RequestParam Integer id) {
 
         repository.borrarPorId(id);
 

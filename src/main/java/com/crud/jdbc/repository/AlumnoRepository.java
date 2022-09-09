@@ -13,6 +13,9 @@ import java.util.List;
 import com.crud.jdbc.model.Alumno;
 import com.crud.jdbc.service.Utils;
 
+import lombok.Data;
+
+@Data
 public class AlumnoRepository implements CrudDAO<Alumno> {
 
 	private final static String DB_URL = "jdbc:mysql://localhost:3306/escuela_jdbc_crud?serverTimezone=GMT";
@@ -43,7 +46,7 @@ public class AlumnoRepository implements CrudDAO<Alumno> {
 			generatedKeys = statement.getGeneratedKeys();
 
 			if (generatedKeys.next()) {
-				Long id = generatedKeys.getLong(1);
+				int id = generatedKeys.getInt(1);
 				alumno.setId(id);
 				return alumno;
 			} else {
@@ -60,7 +63,7 @@ public class AlumnoRepository implements CrudDAO<Alumno> {
 	}
 
 	@Override
-	public Alumno buscarPorId(Long id) {
+	public Alumno buscarPorId(int id) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -100,7 +103,7 @@ public class AlumnoRepository implements CrudDAO<Alumno> {
 			List<Alumno> alumnos = new ArrayList<>();
 
 			while (resultSet.next()) {
-				Long id = resultSet.getLong("id");
+				int id = resultSet.getInt("id");
 				String nombre = resultSet.getString("nombre");
 				String apellido = resultSet.getString("apellido");
 				Date fechaNac = resultSet.getDate("fecha_nac");
@@ -147,7 +150,7 @@ public class AlumnoRepository implements CrudDAO<Alumno> {
 	}
 
 	@Override
-	public void borrarPorId(Long id) {
+	public void borrarPorId(int id) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		try {
@@ -166,4 +169,5 @@ public class AlumnoRepository implements CrudDAO<Alumno> {
 		}
 
 	}
+
 }

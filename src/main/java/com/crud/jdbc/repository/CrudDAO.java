@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface CrudDAO<T> {
 
-	    T guardar(T entity);
+	T guardar(T entity);
 
-	    T buscarPorId(Long id);
+	T buscarPorId(int id);
 
-	    List<T> buscarTodos();
+	List<T> buscarTodos();
 
-	    T actualizar(T entity);
+	T actualizar(T entity);
 
-	    void borrarPorId(Long id);
-	
+	void borrarPorId(int id);
+
 }

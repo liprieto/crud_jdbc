@@ -13,6 +13,9 @@ import java.util.List;
 import com.crud.jdbc.model.Materia;
 import com.crud.jdbc.service.Utils;
 
+import lombok.Data;
+
+@Data
 public class MateriaRepository implements CrudDAO<Materia>{
 	
     private final static String DB_URL = "jdbc:mysql://localhost:3306/escuela_jdbc_crud?serverTimezone=GMT";
@@ -45,7 +48,7 @@ public class MateriaRepository implements CrudDAO<Materia>{
             generatedKeys = statement.getGeneratedKeys();
 
             if (generatedKeys.next()) {
-                Long id = generatedKeys.getLong(1);
+                int id = generatedKeys.getInt(1);
                 materia.setId(id);
                 return materia;
             } else {
@@ -61,7 +64,7 @@ public class MateriaRepository implements CrudDAO<Materia>{
         return null;
 	}
 	@Override
-	public Materia buscarPorId(Long id) {
+	public Materia buscarPorId(int id) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -77,7 +80,7 @@ public class MateriaRepository implements CrudDAO<Materia>{
 
             if (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
-                Long periodo = resultSet.getLong("periodo");
+                int periodo = resultSet.getInt("periodo");
                 String semestre = resultSet.getString("semestre");
                 return new Materia(id, nombre, periodo, semestre);
             }
@@ -107,9 +110,9 @@ public class MateriaRepository implements CrudDAO<Materia>{
             List<Materia> materias = new ArrayList<>();
 
             while (resultSet.next()) {
-                Long id = resultSet.getLong("id");
+                int id = resultSet.getInt("id");
                 String nombre = resultSet.getString("nombre");
-                Long periodo = resultSet.getLong("periodo");
+                int periodo = resultSet.getInt("periodo");
                 String semestre = resultSet.getString("semestre");
                 
       
@@ -156,7 +159,7 @@ public class MateriaRepository implements CrudDAO<Materia>{
         return null;
 	}
 	@Override
-	public void borrarPorId(Long id) {
+	public void borrarPorId(int id) {
 		Connection connection = null;
 		PreparedStatement statement = null;
         try {
@@ -180,4 +183,5 @@ public class MateriaRepository implements CrudDAO<Materia>{
 		}
 		
 	}
+
 }

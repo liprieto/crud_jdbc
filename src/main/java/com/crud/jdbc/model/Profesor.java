@@ -1,7 +1,5 @@
 package com.crud.jdbc.model;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,13 +7,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Alumno {
+public class Profesor {
+	
 	
 	private int id;
-    private String nombre;
-    private String apellido;
-    private Date fecha_nac;
-    private String domicilio;
-    
-    
+	private String nombre;
+	private String apellido;
+	private String legajo;
 }

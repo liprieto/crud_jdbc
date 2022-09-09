@@ -24,7 +24,7 @@ public class AlumnoController {
 	}
 
 	@GetMapping("/alumno")
-	public String buscarAlumno(Model model, @RequestParam(required = false) Long id) {
+	public String buscarAlumno(Model model, @RequestParam(required = false) Integer id) {
 
 		Alumno alumno = new Alumno();
 		if (id != null) {
@@ -38,7 +38,7 @@ public class AlumnoController {
 	@PostMapping("/alumno")
 	public String enviarAlumno(@ModelAttribute Alumno alumno) {
 
-		if (alumno.getId() != null) {
+		if (alumno.getId() != 0) {
 			repository.actualizar(alumno);
 		} else {
 			repository.guardar(alumno);
@@ -47,7 +47,7 @@ public class AlumnoController {
 	}
 
 	@GetMapping("/alumno/delete")
-	public String borrarAlumno(@RequestParam Long id) {
+	public String borrarAlumno(@RequestParam Integer id) {
 
 		repository.borrarPorId(id);
 
