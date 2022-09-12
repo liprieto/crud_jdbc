@@ -44,7 +44,7 @@ public class MateriaController {
         } else {
             repository.guardar(materia);
         }
-        return "redirect:/materia";
+        return "redirect:/materias";
     }
 
     @GetMapping("/materia/delete")
