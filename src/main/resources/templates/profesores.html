@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Alumnos</title>
+    <title>Lista de Profesores</title>
 </head>
 <style>
     table {
@@ -24,8 +24,8 @@
     }
 </style>
 <body>
-<h3>Alumnos</h3>
-<a href="/alumno">Nuevo alumno !</a>
+<h3>Profesores</h3>
+<a href="/profesor">Nuevo profesor !</a>
 <br><br>
 <table>
     <thead>
@@ -33,21 +33,19 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Fecha Nacimiento</th>
-        <th>Domicilio</th>
+        <th>Legajo</th>
         <th></th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="alumno : ${alumnos}">
-        <td th:text="${alumno.id}">id</td>
-        <td th:text="${alumno.nombre}">nombre</td>
-        <td th:text="${alumno.apellido}">apellido</td>
-        <td th:text="${alumno.fecha_nac}">fecha nacimiento</td>
-        <td th:text="${alumno.domicilio}">domicilio</td>
-        <td><a th:href="@{/alumno(id=${alumno.id})}">Editar</a></td>
-        <td><a th:href="@{/alumno/delete(id=${alumno.id})}">Borrar</a></td>
+    <tr th:each="profesor : ${profesores}">
+        <td th:text="${profesor.id}">id</td>
+        <td th:text="${profesor.nombre}">nombre</td>
+        <td th:text="${profesor.apellido}">apellido</td>
+        <td th:text="${profesor.legajo}">legajo</td>
+        <td><a th:href="@{/profesor(id=${profesor.id})}">Editar</a></td>
+        <td><a th:href="@{/profesor/delete(id=${profesor.id})}">Borrar</a></td>
     </tr>
     </tbody>
 </table>

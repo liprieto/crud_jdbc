@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -90,19 +91,85 @@ public class ProfesorRepository implements CrudDAO<Profesor> {
 
 	@Override
 	public List<Profesor> buscarTodos() {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+			statement = connection.prepareStatement("SELECT * FROM profesor;");
+			resultSet = statement.executeQuery();
+			
+			List<Profesor> profesores = new ArrayList<>();
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String nombre = resultSet.getString("nombre");
+				String apellido = resultSet.getString("apellido");
+				String legajo = resultSet.getString("legajo");
+				
+				profesores.add(new Profesor(id, nombre, apellido, legajo));
+			}
+			return profesores;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Utils.cerrarResultSet(resultSet);
+			Utils.cerrarStatement(statement);
+			Utils.cerrarConexion(connection);
+		}
 		return null;
 	}
 
 	@Override
-	public Profesor actualizar(Profesor entity) {
-		// TODO Auto-generated method stub
+	public Profesor actualizar(Profesor profesor) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+			statement = connection.prepareStatement("UPDATE profesional SET nombre =?, apellido=?, legajo=? WHERE id=?");
+			
+			statement.setString(1, profesor.getNombre());
+			statement.setString(2, profesor.getApellido());
+			statement.setString(3, profesor.getLegajo());			
+			statement.setInt(4, profesor.getId());
+			
+			if (statement.executeUpdate() != 1) {
+                throw new SQLException("No es posible actualizar datos");
+            }
+            return profesor;
+		}catch(SQLException e) {
+			
+		}finally {
+			Utils.cerrarStatement(statement);
+			Utils.cerrarConexion(connection);
+		}
 		return null;
 	}
 
 	@Override
 	public void borrarPorId(int id) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement statement = null;
+        try {
+            connection = DriverManager.getConnection(
+                    DB_URL, DB_USER, DB_PASSWORD
+            );
+            statement = connection.prepareStatement(
+                    "DELETE FROM profesor WHERE id=?"
+            );
+            statement.setLong(1, id);
+
+            if (statement.executeUpdate() != 1) {
+                throw new SQLException("No se pudo eliminar registro");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		finally {
+			Utils.cerrarStatement(statement);
+			Utils.cerrarConexion(connection);
+		}
 
 	}
 
