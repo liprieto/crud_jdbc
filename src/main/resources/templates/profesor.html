@@ -52,37 +52,8 @@
 				</div>
 			</form>
 		</div>
-		<a href="/profesores">Volver al listado</a>
+		<a href="/profesores" class="btn btn-primary">Volver al listado</a>
 	</div>
 
 
 </body>
-<!--  <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevo Profesor</title>
-</head>
-<body>
-<h3 th:text="${profesor.id} ? 'Editar Profesor' : 'Nuevo Profesor'">Profesor</h3>
-<form method="post" th:action="@{/profesor}" th:object="${profesor}">
-    <input name="id" th:field="*{id}" type="hidden">
-    <label for="profesor-nombre">Nombre:</label>
-    <input id="profesor-nombre" name="Nombre" placeholder="Pepe" required th:field="*{nombre}" type="text">
-    <br><br>
-    <label for="profesor-apellido">Apellido:</label>
-    <input id="profesor-apellido" name="apellido" placeholder="Perez" required th:field="*{apellido}" type="text">
-    <br><br>
-    <label for="profesor-legajo">Legajo:</label>
-    <input id="profesor-legajo" name="legajo" placeholder="S1209" required th:field="*{legajo}" type="text">
-    <br><br>
-    <br><br>
-    <input type="submit" value="Enviar">
-</form>
-<br>
-<a href="/profesores">Volver al listado</a>
-</body>
--->

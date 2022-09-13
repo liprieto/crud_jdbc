@@ -53,38 +53,8 @@
 				</div>
 			</form>
 		</div>
-		<a href="/materias">Volver al listado</a>
+		<a href="/materias" class="btn btn-primary">Volver al listado</a>
 	</div>
 
 
 </body>
-<!-- 
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Nueva Materia</title>
-</head>
-<body>
-<h3 th:text="${materia.id} ? 'Editar Materia' : 'Crear materia'">Materia</h3>
-<form method="post" th:action="@{/materia}" th:object="${materia}">
-    <input name="id" th:field="*{id}" type="hidden">
-    <label for="materia-nombre">Nombre:</label>
-    <input id="materia-nombre" name="nombre" placeholder="Algoritmos" required th:field="*{nombre}" type="text">
-    <br><br>
-    <label for="materia-periodo">Año:</label>
-    <input id="materia-periodo" name="año" placeholder="2020" required th:field="*{periodo}" type="number">
-    <br><br>
-    <label for="materia-semestre">Semestre:</label>
-    <input id="materia-semestre" name="semestre" placeholder="Segundo" required th:field="*{semestre}" type="text">
-    <br><br>
-    <input type="submit" value="Enviar">
-</form>
-<br>
-<a href="/materias">Volver a la lista de materias</a>
-</body>
-</html>
- -->
