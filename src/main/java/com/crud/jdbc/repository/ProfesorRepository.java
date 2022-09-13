@@ -127,7 +127,7 @@ public class ProfesorRepository implements CrudDAO<Profesor> {
 		
 		try {
 			connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-			statement = connection.prepareStatement("UPDATE profesional SET nombre =?, apellido=?, legajo=? WHERE id=?");
+			statement = connection.prepareStatement("UPDATE profesor SET nombre =?, apellido=?, legajo=? WHERE id=?");
 			
 			statement.setString(1, profesor.getNombre());
 			statement.setString(2, profesor.getApellido());
